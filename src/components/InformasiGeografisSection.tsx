@@ -105,10 +105,9 @@ const InformasiGeografisSection = () => {
   useEffect(() => {
     if (!desaInfo.length) return;
 
-    const rafId: number;
     let observer: IntersectionObserver;
 
-    rafId = requestAnimationFrame(() => {
+    const rafId = requestAnimationFrame(() => {
       observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
           if (!entry.isIntersecting) return;
