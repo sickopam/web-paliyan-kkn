@@ -53,7 +53,7 @@ export default function NavBar() {
         
         {/* Logo Section - More compact for mobile */}
         <Link href="/" className="flex items-center space-x-1.5 sm:space-x-2 flex-shrink-0 group">
-          <div className="relative w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 overflow-hidden rounded-full border-2 border-blue-500 shadow-md transition-all duration-300 group-hover:shadow-blue-200 group-hover:scale-105">
+          <div className="logo-header">
             <Image
               src="/logo-kkn.png"
               alt="UGM Logo"
@@ -69,7 +69,7 @@ export default function NavBar() {
             <div className="flex items-center">
               <span className="text-blue-900 font-bold text-xs sm:text-sm tracking-tight">Paliyan Menawan</span>
             </div>
-            <span className="text-blue-600 text-[9px] sm:text-xs bg-blue-50 px-1.5 rounded-full inline-block whitespace-nowrap">KKN-PPM UGM 2025</span>
+            <span className="text-blue-600 text-[9px] sm:text-xs bg-blue-50 px-1.5 rounded-full inline-block whitespace-nowrap">KKN-PPM UGM 2026</span>
           </div>
         </Link>
 
@@ -77,27 +77,28 @@ export default function NavBar() {
         <div className="hidden lg:flex items-center space-x-1 xl:space-x-2">
           <Link
             href="/"
-            className="relative group px-4 py-2 text-blue-700 font-medium text-sm xl:text-base rounded-full hover:bg-blue-50 transition-all duration-300">
-            <span className="relative z-10">Beranda</span>
-            <span className="absolute bottom-1.5 left-0 w-0 h-0.5 bg-blue-500 group-hover:w-full transition-all duration-300"></span>
+            className="nav-hood">
+            <span>Beranda</span>
           </Link>
           <Link
             href="/karangduwet"
-            className="relative group px-4 py-2 text-blue-700 font-medium text-sm xl:text-base rounded-full hover:bg-blue-50 transition-all duration-300">
-            <span className="relative z-10">Karangduwet</span>
-            <span className="absolute bottom-1.5 left-0 w-0 h-0.5 bg-blue-500 group-hover:w-full transition-all duration-300"></span>
+            className="nav-hood">
+            <span>Karangduwet</span>
           </Link>
           <Link
             href="/grogol"
-            className="relative group px-4 py-2 text-blue-700 font-medium text-sm xl:text-base rounded-full hover:bg-blue-50 transition-all duration-300">
-            <span className="relative z-10">Grogol</span>
-            <span className="absolute bottom-1.5 left-0 w-0 h-0.5 bg-blue-500 group-hover:w-full transition-all duration-300"></span>
+            className="nav-hood">
+            <span>Grogol</span>
           </Link>
           <Link
             href="/pampang"
-            className="relative group px-4 py-2 text-blue-700 font-medium text-sm xl:text-base rounded-full hover:bg-blue-50 transition-all duration-300">
-            <span className="relative z-10">Pampang</span>
-            <span className="absolute bottom-1.5 left-0 w-0 h-0.5 bg-blue-500 group-hover:w-full transition-all duration-300"></span>
+            className="nav-hood">
+            <span>Pampang</span>
+          </Link>
+          <Link
+            href="/mulusan"
+            className="nav-hood">
+            <span>Mulusan</span>
           </Link>
         </div>
 
@@ -179,35 +180,43 @@ export default function NavBar() {
             <nav className="flex flex-col space-y-2">
               <Link
                 href="/"
-                className="group flex items-center py-3 px-4 text-gray-700 hover:text-blue-600 active:bg-blue-100 hover:bg-blue-50 rounded-xl transition-all duration-200 ease-in-out touch-manipulation min-h-[48px]"
+                className="menu-links"
                 onClick={() => setMenuOpen(false)}
               >
-                <span className="w-1 h-8 bg-transparent group-hover:bg-blue-500 rounded-full transition-all duration-200 mr-3 flex-shrink-0"></span>
+                <span className="menu-active"></span>
                 <span className="font-medium text-base">Beranda</span>
               </Link>
               <Link
                 href="/karangduwet"
-                className="group flex items-center py-3 px-4 text-gray-700 hover:text-blue-600 active:bg-blue-100 hover:bg-blue-50 rounded-xl transition-all duration-200 ease-in-out touch-manipulation min-h-[48px]"
+                className="menu-links"
                 onClick={() => setMenuOpen(false)}
               >
-                <span className="w-1 h-8 bg-transparent group-hover:bg-blue-500 rounded-full transition-all duration-200 mr-3 flex-shrink-0"></span>
+                <span className="menu-active"></span>
                 <span className="font-medium text-base">Karangduwet</span>
               </Link>
               <Link
                 href="/grogol"
-                className="group flex items-center py-3 px-4 text-gray-700 hover:text-blue-600 active:bg-blue-100 hover:bg-blue-50 rounded-xl transition-all duration-200 ease-in-out touch-manipulation min-h-[48px]"
+                className="menu-links"
                 onClick={() => setMenuOpen(false)}
               >
-                <span className="w-1 h-8 bg-transparent group-hover:bg-blue-500 rounded-full transition-all duration-200 mr-3 flex-shrink-0"></span>
+                <span className="menu-active"></span>
                 <span className="font-medium text-base">Grogol</span>
               </Link>
               <Link
                 href="/pampang"
-                className="group flex items-center py-3 px-4 text-gray-700 hover:text-blue-600 active:bg-blue-100 hover:bg-blue-50 rounded-xl transition-all duration-200 ease-in-out touch-manipulation min-h-[48px]"
+                className="menu-links"
                 onClick={() => setMenuOpen(false)}
               >
-                <span className="w-1 h-8 bg-transparent group-hover:bg-blue-500 rounded-full transition-all duration-200 mr-3 flex-shrink-0"></span>
+                <span className="menu-active"></span>
                 <span className="font-medium text-base">Pampang</span>
+              </Link>
+              <Link
+                href="/mulusan"
+                className="menu-links"
+                onClick={() => setMenuOpen(false)}
+              >
+                <span className="menu-active"></span>
+                <span className="font-medium text-base">Mulusan</span>
               </Link>
             </nav>
           </div>

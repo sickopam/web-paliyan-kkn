@@ -1,43 +1,14 @@
-"use client";
-
 import React from 'react';
 import Image from 'next/image';
-
-interface AnggotaDesa {
-  id: number;
-  nama: string;
-  jabatan: string;
-  prodi: string;
-  foto: string;
-  isVideo?: boolean;
-  nim?: string;
-}
-
-interface Koordinator {
-  nama: string;
-  jabatan: string;
-  foto: string;
-  prodi: string;
-  nim: string;
-  isVideo?: boolean;
-}
-
-interface DesaData {
-  id: number;
-  namaDesa: string;
-  deskripsi: string;
-  koordinator: Koordinator;
-  fotoBersama: string[];
-  anggota: AnggotaDesa[];
-}
+import type { DesaDataItem, Anggota } from '@/data/desa';
 
 interface DesaCarouselProps {
-  desaList: DesaData[];
+  desaList: DesaDataItem[];
 }
 
 // Playful Anggota Card with Decorative Elements
 const AnggotaCard: React.FC<{ 
-  anggota: AnggotaDesa,
+  anggota: Anggota,
   isActive?: boolean 
 }> = ({ anggota, isActive = false }) => {
   // Get decorative elements based on anggota.id
@@ -132,37 +103,17 @@ const AnggotaCard: React.FC<{
             </div>
           )}
           
-          {/* Main Image in top portion - Pushed even higher up */}
+          {/* Main Image in top portion */}
           <div className="absolute -top-6 inset-x-0 h-[70%] flex items-start justify-center">
-            {anggota.isVideo ? (
-              <div className="relative w-[200px] h-[200px] sm:w-[200px] sm:h-[190px] overflow-hidden rounded-lg">
-                <video 
-                  autoPlay 
-                  muted 
-                  loop 
-                  playsInline
-                  className="absolute inset-0 w-full h-full object-cover"
-                >
-                  <source src={anggota.foto} type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
-                <div className="absolute bottom-2 right-2 bg-white rounded-full p-1.5 shadow-sm">
-                  <svg className="w-3 h-3 text-gray-800" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M10 0C4.477 0 0 4.477 0 10C0 15.523 4.477 20 10 20C15.523 20 20 15.523 20 10C20 4.477 15.523 0 10 0ZM8 14.5V5.5L14 10L8 14.5Z" />
-                  </svg>
-                </div>
-              </div>
-            ) : (
-              <div className="relative w-[180px] h-[180px] sm:w-[190px] sm:h-[190px] rounded-lg overflow-hidden border-3 border-white shadow-lg">
-                <Image
-                  src={anggota.foto}
-                  alt={anggota.nama}
-                  fill
-                  sizes="190px"
-                  className="object-cover"
-                />
-              </div>
-            )}
+            <div className="relative w-[180px] h-[180px] sm:w-[190px] sm:h-[190px] rounded-lg overflow-hidden border-3 border-white shadow-lg">
+              <Image
+                src={anggota.foto}
+                alt={anggota.nama}
+                fill
+                sizes="190px"
+                className="object-cover"
+              />
+            </div>
           </div>
           
           {/* Information Card - Even more compact to fit larger image */}
@@ -321,8 +272,12 @@ const FotoBersamaCarousel: React.FC<{
 };
 
 // Main Desa Section
-const DesaCarouselSection: React.FC<{ desa: DesaData, index: number }> = ({ desa, index: _index }) => {
+const DesaCarouselSection: React.FC<{ desa: DesaDataItem, index: number }> = ({ desa, index: _index }) => {
   const [currentIndex, setCurrentIndex] = React.useState(0);
+  const carouselItems = React.useMemo(
+    () => [...desa.anggota, ...desa.anggota],
+  [desa.anggota]
+  );
   const [isTransitioning, setIsTransitioning] = React.useState(false);
   const [isMobile, setIsMobile] = React.useState(false);
   const [isVisible, setIsVisible] = React.useState(false);
@@ -509,29 +464,13 @@ const DesaCarouselSection: React.FC<{ desa: DesaData, index: number }> = ({ desa
                 <div className="relative">
                   <div className="absolute -inset-1 bg-gradient-to-r from-pink-600 to-purple-600 rounded-full animate-spin-slow group-hover:animate-ping"></div>
                   <div className="relative w-16 h-16 flex-shrink-0 overflow-hidden rounded-full ring-4 ring-white shadow-2xl transform group-hover:scale-110 transition-transform duration-300">
-                    {desa.koordinator.isVideo ? (
-                      <video 
-                        autoPlay 
-                        muted 
-                        loop 
-                        playsInline
-                        className="absolute inset-0 w-full h-full object-cover"
-                      >
-                        <source src={desa.koordinator.foto} type="video/mp4" />
-                        Your browser does not support the video tag.
-                      </video>
-                    ) : (
-                      <Image
-                        src={desa.koordinator.foto}
-                        alt={desa.koordinator.nama}
-                        fill
-                        sizes="64px"
-                        className="object-cover transition-transform duration-700 group-hover:scale-125"
-                        onError={() => {
-                          console.log('Koordinator image failed to load:', desa.koordinator.foto);
-                        }}
-                      />
-                    )}
+                    <Image
+                      src={desa.koordinator.foto}
+                      alt={desa.koordinator.nama}
+                      fill
+                      sizes="64px"
+                      className="object-cover transition-transform duration-700 group-hover:scale-125"
+                    />
                     {/* Online indicator */}
                     <div className="absolute -bottom-1 -right-1 w-5 h-5 bg-green-400 border-2 border-white rounded-full animate-pulse"></div>
                   </div>
@@ -627,10 +566,10 @@ const DesaCarouselSection: React.FC<{ desa: DesaData, index: number }> = ({ desa
               }}
             >
               {/* Show items twice to create a continuous loop effect */}
-              {[...desa.anggota, ...desa.anggota.slice(0, Math.min(3, desa.anggota.length))].map((anggota, index) => (
-                <AnggotaCard 
-                  key={`${anggota.id}-${index}`} 
-                  anggota={anggota}
+              {carouselItems.map((anggota, index) => (
+                <AnggotaCard
+                  key={`${anggota.id}-${index}`}
+                  anggota={anggota as Anggota}
                   isActive={index % desa.anggota.length === currentIndex}
                 />
               ))}

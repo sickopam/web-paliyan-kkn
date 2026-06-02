@@ -9,8 +9,9 @@ const Footer: React.FC = () => {
 
   const desaLinks = [
     { name: 'Desa Karangduwet', href: '#karangduwet', icon: '🌾' },
-    { name: 'Desa Grogol', href: '#grogol', icon: '🏛️' },
-    { name: 'Desa Pampang', href: '#pampang', icon: '🏔️' }
+    { name: 'Desa Grogol', href: '#grogol', icon: '🛍️' },
+    { name: 'Desa Pampang', href: '#pampang', icon: '🪙' },
+    { name: 'Desa Mulusan', href: '#mulusan', icon: '🏔️' }
   ];
 
   const quickLinks = [
@@ -28,8 +29,8 @@ const Footer: React.FC = () => {
         </svg>
       ),
       label: 'Email',
-      value: 'kkn.paliyan2025@ugm.ac.id',
-      href: 'mailto:kkn.paliyan2025@ugm.ac.id'
+      value: 'kkn.paliyan2026@ugm.ac.id',
+      href: 'mailto:kkn.paliyan2026@ugm.ac.id'
     },
     {
       icon: (
@@ -97,7 +98,7 @@ const Footer: React.FC = () => {
                 </div>
                 <div>
                   <h3 className="text-xl font-bold text-white">Paliyan Menawan</h3>
-                  <p className="text-blue-300 text-sm">KKN-PPM UGM 2025</p>
+                  <p className="text-blue-300 text-sm">KKN-PPM UGM 2026</p>
                 </div>
               </div>
               
@@ -225,7 +226,7 @@ const Footer: React.FC = () => {
                 © {currentYear} KKN-PPM UGM Paliyan. Seluruh hak cipta dilindungi.
               </p>
               <p className="text-gray-400 text-xs mt-1">
-                Pengembangan oleh Iqbal Hidayat Rasyad dan Tim KKN UGM Paliyan 2025
+                Pengembangan oleh Pamski dan Tim KKN UGM Paliyan 2026
               </p>
             </div>
 
@@ -241,7 +242,7 @@ const Footer: React.FC = () => {
               </div>
               <div className="text-center sm:text-right">
                 <p className="font-medium text-white">Universitas Gadjah Mada</p>
-                <p className="text-xs text-blue-300">Kuliah Kerja Nyata PPM 2025</p>
+                <p className="text-xs text-blue-300">Kuliah Kerja Nyata PPM 2026</p>
               </div>
             </div>
           </div>

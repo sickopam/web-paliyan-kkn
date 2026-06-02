@@ -124,3 +124,39 @@ body {
 .animate-spin-slow {
   animation: spin-slow 3s linear infinite;
 }
+
+/* TAILWIND CLASS - NAVBAR */
+.logo-header {
+  @apply relative w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 overflow-hidden rounded-full border-2 border-blue-500 shadow-md transition-all duration-300 group-hover:shadow-blue-200 group-hover:scale-105;
+}
+.nav-hood {
+  @apply relative px-4 py-2 text-blue-700 font-medium text-sm xl:text-base rounded-full hover:bg-blue-50 transition-all duration-300;
+}
+.mobile-menu {
+  @apply flex items-center justify-center w-9 h-9 rounded-full bg-blue-50 text-blue-700 hover:bg-blue-100 active:bg-blue-200 transition-all duration-300 touch-manipulation;
+}
+.menu-links {
+  @apply flex items-center py-3 px-4 text-gray-700 hover:text-blue-600 active:bg-blue-100 hover:bg-blue-50 rounded-xl transition-all duration-200 ease-in-out touch-manipulation min-h-[48px];
+}
+.menu-active {
+  @apply w-1 h-8 bg-transparent rounded-full transition-all duration-200 mr-3 flex-shrink-0
+}
+.menu-links:hover .menu-active {
+  @apply bg-blue-500;
+}
+
+/* TAILWIND CLASS - HERO SECTION */
+.main-container {
+  @apply relative z-20 flex flex-col lg:flex-row items-center justify-between min-h-screen max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-0;
+}
+.main-paragraph {
+  @apply pr-4 text-justify text-base sm:text-lg md:text-xl text-gray-600 mb-8 leading-relaxed transition-all duration-1000;
+}
+
+/* TAILWIND CLASS - GEOGRAFIS SECTION */
+.sm-card {
+  @apply bg-gray-50 rounded-lg p-2 sm:p-3 transform transition-all duration-300 hover:shadow-md;
+}
+.highlight {
+  @apply absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent p-4 sm:p-6 z-20 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300;
+}
