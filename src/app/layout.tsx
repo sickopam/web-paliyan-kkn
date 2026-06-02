@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { Poppins } from 'next/font/google';
-// @ts-ignore: CSS import type declarations not found
+// @ts-expect-error: CSS import type declarations not found
 import './globals.css';
 
 const poppins = Poppins({
